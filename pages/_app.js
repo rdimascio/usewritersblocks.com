@@ -19,7 +19,7 @@ export default function MyApp({ Component, pageProps }) {
 	return (
 		<ThemeProvider attribute="class">
 			<Header />
-			<main className="pt-16">
+			<main>
 				<Component {...pageProps} />
 			</main>
 			<Footer />
