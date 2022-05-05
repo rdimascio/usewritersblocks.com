@@ -81,6 +81,7 @@ const ContentSecurityPolicy = `
 	media-src 'none';
 	connect-src *;
 	font-src 'self' fonts.gstatic.com;
+	frame-src demo.usewritersblocks.com;
 `;
 
 const securityHeaders = [
