@@ -3,7 +3,7 @@
  */
 import React, { useState, useRef, useEffect } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
-import { ChevronRightIcon } from '@heroicons/react/solid'
+import { ChevronRightIcon } from '@heroicons/react/solid';
 import cx from 'classnames';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -23,33 +23,33 @@ export default function Home() {
 	const handleAnnotationClick = (e) => {
 		const target = e.target;
 
-		target.innerText = 'you\'ve';
+		target.innerText = "you've";
 		setIsAnnotationActive(false);
-		
-		if ( isAnnotationActive ) {
+
+		if (isAnnotationActive) {
 			setClickCount((prevCount) => prevCount + 1);
 		}
-		
+
 		setTimeout(() => {
 			setDidConfettiExplode(true);
 		}, 1000);
 	};
 
 	const getEasterEggMessage = () => {
-		switch(clickCount) {
+		switch (clickCount) {
 			case 2:
-				return 'Oh, you think you\'ve found something?';
+				return "Oh, you think you've found something?";
 			case 4:
 				return 'Certainly not an easter egg';
 			case 6:
-				return 'You\'re definitely not getting any closer';
+				return "You're definitely not getting any closer";
 			case 10:
-				return 'You\'re persistent, aren\'t you? Fine, take it.';
+				return "You're persistent, aren't you? Fine, take it.";
 		}
 	};
 
 	const getEasterEggDiscountCode = () => {
-		switch(clickCount) {
+		switch (clickCount) {
 			case 10:
 				return 'EGG10';
 		}
@@ -57,8 +57,13 @@ export default function Home() {
 
 	useEffect(() => {
 		if (iframeRef.current) {
-			const { transform: currentIframeTransform } = window.getComputedStyle( iframeRef.current );
-			const { m42: currentIframeTop, m22: currentIframeScale } = new WebKitCSSMatrix( currentIframeTransform );
+			const { transform: currentIframeTransform } = window.getComputedStyle(
+				iframeRef.current
+			);
+			/* eslint-disable-next-line no-undef */
+			const { m42: currentIframeTop, m22: currentIframeScale } = new WebKitCSSMatrix(
+				currentIframeTransform
+			);
 
 			iframeTop.current = currentIframeTop;
 			iframeScale.current = currentIframeScale;
@@ -69,8 +74,13 @@ export default function Home() {
 		const handleScroll = throttle(({ deltaY }) => {
 			const initialTop = iframeTop.current;
 			const initialScale = iframeScale.current;
-			const { transform: currentIframeTransform } = window.getComputedStyle( iframeRef.current );
-			const { m42: currentIframeTop, m22: currentIframeScale } = new WebKitCSSMatrix( currentIframeTransform );
+			const { transform: currentIframeTransform } = window.getComputedStyle(
+				iframeRef.current
+			);
+			/* eslint-disable-next-line no-undef */
+			const { m42: currentIframeTop, m22: currentIframeScale } = new WebKitCSSMatrix(
+				currentIframeTransform
+			);
 
 			let newTop = currentIframeTop;
 			let newScale = currentIframeScale;
@@ -81,7 +91,7 @@ export default function Home() {
 					newTop = Math.max(0, currentIframeTop - deltaY * 3);
 				} else {
 					if (currentIframeScale < 1) {
-						newScale = Math.min(1, currentIframeScale + (deltaY / 2) / 100);
+						newScale = Math.min(1, currentIframeScale + deltaY / 2 / 100);
 					}
 				}
 
@@ -93,22 +103,22 @@ export default function Home() {
 			} else {
 				// Going back down
 				if (currentIframeScale > initialScale) {
-					newScale = Math.max(initialScale, currentIframeScale - ((-1 * deltaY) / 2) / 100);
+					newScale = Math.max(initialScale, currentIframeScale - (-1 * deltaY) / 2 / 100);
 				} else if (currentIframeTop < initialTop) {
 					newTop = Math.min(initialTop, currentIframeTop + deltaY * -3);
 				}
 
-				if ( currentIframeScale === initialScale && currentIframeTop === initialTop ) {
+				if (currentIframeScale === initialScale && currentIframeTop === initialTop) {
 					setIsIframeActive(false);
 				}
 			}
 
-			iframeRef.current.style.transform = `translateY(${ newTop }px) scale(${ newScale })`;
+			iframeRef.current.style.transform = `translateY(${newTop}px) scale(${newScale})`;
 		}, 100);
 
 		const handleWindowResize = throttle(() => {
-			iframeRef.current.style.transform = `translateY(${ iframeTop.current }px) scale(${ iframeScale.current })`;
-		} , 100);
+			iframeRef.current.style.transform = `translateY(${iframeTop.current}px) scale(${iframeScale.current})`;
+		}, 100);
 
 		window.addEventListener('wheel', handleScroll, { passive: true });
 		window.addEventListener('resize', handleWindowResize);
@@ -242,7 +252,10 @@ export default function Home() {
 									</span>
 									<span className="rounded bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-800 tracking-wide uppercase">
 										{clickCount >= 10 ? (
-											<a href="https://usewritersblocks.lemonsqueezy.com/checkout/buy/5b192dd2-ecfc-4510-bb8e-27b680722df3?logo=0dark=1&embed=1" className="lemonsqueezy-button">
+											<a
+												href="https://usewritersblocks.lemonsqueezy.com/checkout/buy/5b192dd2-ecfc-4510-bb8e-27b680722df3?logo=0dark=1&embed=1"
+												className="lemonsqueezy-button"
+											>
 												{getEasterEggDiscountCode()}
 											</a>
 										) : null}
@@ -277,23 +290,21 @@ export default function Home() {
 										)}
 										onClick={handleAnnotationClick}
 										{...{
-											'disabled': ! isAnnotationActive,
+											disabled: !isAnnotationActive,
 										}}
 									>
 										{isAnnotationActive ? "youv'e" : "you've"}
-										{
-											! isAnnotationActive && ! didConfettiExplode
-												? <span className="absolute left-1/2 top-1/2 translate-y-[-50%] translate-x-[-50%]">
-													<ConfettiExplosion
-														force={0.4}
-														duration={3000}
-														particleCount={60}
-														floorHeight={1000}
-														floorWidth={1000}
-													/>
-												</span>
-												: null
-										}
+										{!isAnnotationActive && !didConfettiExplode ? (
+											<span className="absolute left-1/2 top-1/2 translate-y-[-50%] translate-x-[-50%]">
+												<ConfettiExplosion
+													force={0.4}
+													duration={3000}
+													particleCount={60}
+													floorHeight={1000}
+													floorWidth={1000}
+												/>
+											</span>
+										) : null}
 									</button>{' '}
 									been waiting for.
 								</h1>
@@ -304,7 +315,7 @@ export default function Home() {
 							ref={iframeRef}
 							className={cx(
 								'absolute top-0 h-[calc(100vh-8.5rem)] w-screen rounded-lg shadow-xl will-change-transform transition-transform',
-								!isIframeActive ? 'pointer-events-none' : '',
+								!isIframeActive ? 'pointer-events-none' : ''
 							)}
 							id="block-editor"
 							title="Block Editor"
@@ -312,7 +323,7 @@ export default function Home() {
 							frameBorder={0}
 							width="100%"
 							height="100%"
-							style={{transform: 'translateY(50%) scale(0.75)'}}
+							style={{ transform: 'translateY(50%) scale(0.75)' }}
 						/>
 					</div>
 				</div>
