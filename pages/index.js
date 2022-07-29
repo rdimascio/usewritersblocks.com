@@ -21,9 +21,6 @@ export default function Home() {
 	const iframeScale = useRef(0);
 
 	const handleAnnotationClick = (e) => {
-		const target = e.target;
-
-		target.innerText = "you've";
 		setIsAnnotationActive(false);
 
 		if (isAnnotationActive) {
