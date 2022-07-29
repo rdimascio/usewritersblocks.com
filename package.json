@@ -7,7 +7,7 @@
 		"description": "A simple Next.js starter with NextAuth.js, Prisma, Planetscale, Tailwind"
 	},
 	"scripts": {
-		"dev": "next dev",
+		"dev": "next",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",

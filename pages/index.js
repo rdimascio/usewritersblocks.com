@@ -3,7 +3,6 @@
  */
 import React, { useState, useRef, useEffect } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
-import { ChevronRightIcon } from '@heroicons/react/solid';
 import cx from 'classnames';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -290,7 +289,7 @@ export default function Home() {
 											disabled: !isAnnotationActive,
 										}}
 									>
-										{isAnnotationActive ? "youv'e" : "you've"}
+										{isAnnotationActive ? "wev'e" : "you've"}
 										{!isAnnotationActive && !didConfettiExplode ? (
 											<span className="absolute left-1/2 top-1/2 translate-y-[-50%] translate-x-[-50%]">
 												<ConfettiExplosion
