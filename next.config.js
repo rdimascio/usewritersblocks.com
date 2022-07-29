@@ -74,14 +74,14 @@ module.exports = withPlugins([[withBundleAnalyzer], [withPWA]], {
 // https://securityheaders.com
 const ContentSecurityPolicy = `
 	default-src 'self';
-	script-src 'self' 'unsafe-eval' 'unsafe-inline';
+	script-src 'self' 'unsafe-eval' 'unsafe-inline' app.lemonsqueezy.com;
 	worker-src 'self';
 	style-src 'self' 'unsafe-inline' fonts.googleapis.com;
 	img-src * blob: data:;
 	media-src 'none';
 	connect-src *;
 	font-src 'self' fonts.gstatic.com;
-	frame-src demo.usewritersblocks.com;
+	frame-src demo.usewritersblocks.com usewritersblocks.lemonsqueezy.com;
 `;
 
 const securityHeaders = [
