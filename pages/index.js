@@ -311,8 +311,8 @@ export default function Home() {
 						<iframe
 							ref={iframeRef}
 							className={cx(
-								'absolute top-0 h-[calc(100vh-8.5rem)] w-screen rounded-lg shadow-xl will-change-transform transition-transform',
-								!isIframeActive ? 'pointer-events-none' : ''
+								'absolute top-0 h-[calc(100vh-8.5rem)] w-screen will-change-transform transition-transform',
+								!isIframeActive ? 'pointer-events-none rounded-lg shadow-xl' : ''
 							)}
 							id="block-editor"
 							title="Block Editor"
