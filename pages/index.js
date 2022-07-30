@@ -88,7 +88,7 @@ export default function Home() {
 
 			return () => {
 				window.removeEventListener('load', loadIframe);
-			}
+			};
 		}
 	}, []);
 
