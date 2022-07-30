@@ -3,12 +3,12 @@
  */
 import React, { useState, useRef, useEffect } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
-import { ChevronRightIcon } from '@heroicons/react/solid';
 import cx from 'classnames';
 import Head from 'next/head';
 import Link from 'next/link';
 import Script from 'next/script';
 import { throttle } from 'lodash';
+import { useTheme } from 'next-themes';
 
 export default function Home() {
 	const [isIframeActive, setIsIframeActive] = useState(false);
@@ -19,6 +19,17 @@ export default function Home() {
 	const iframeRef = useRef(null);
 	const iframeTop = useRef(0);
 	const iframeScale = useRef(0);
+	const { theme, setTheme } = useTheme();
+
+	const handleLiveDemoClick = () => {
+		iframeRef.current.style.transform = `translateY(0px) scale(0.75)`;
+
+		setTimeout(() => {
+			iframeRef.current.style.transform = `translateY(0px) scale(1)`;
+		}, 100);
+
+		setIsIframeActive(true);
+	};
 
 	const handleAnnotationClick = (e) => {
 		setIsAnnotationActive(false);
@@ -265,12 +276,14 @@ export default function Home() {
 							</div>
 							<div className="absolute flex items-center justify-end inset-y-0 right-0">
 								<span className="inline-flex rounded-md shadow">
-									<a
-										href="https://usewritersblocks.lemonsqueezy.com/checkout/buy/5b192dd2-ecfc-4510-bb8e-27b680722df3?logo=0dark=1&embed=1"
-										className="lemonsqueezy-button inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-green-800 hover:text-green-100"
+									<button
+										className="px-4 py-2 text-white dark:text-black bg-black dark:bg-white font-semibold rounded-md"
+										onClick={() => {
+											setTheme(theme === 'light' ? 'dark' : 'light')
+										}}
 									>
-										Get Started
-									</a>
+										Change Theme
+									</button>
 								</span>
 							</div>
 						</nav>
@@ -309,14 +322,38 @@ export default function Home() {
 									</button>{' '}
 									been waiting for.
 								</h1>
+								<p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+									Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
+									fugiat veniam occaecat fugiat aliqua.
+								</p>
+								<div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+									<div className="rounded-md shadow">
+										<a
+											href="https://usewritersblocks.lemonsqueezy.com/checkout/buy/5b192dd2-ecfc-4510-bb8e-27b680722df3?logo=0dark=1&embed=1"
+											className="lemonsqueezy-button w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black md:py-4 md:text-lg md:px-10"
+										>
+											Get started
+										</a>
+									</div>
+
+									<div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+										<button
+											onClick={handleLiveDemoClick}
+											className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-black bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+										>
+											Live demo
+										</button>
+									</div>
+								</div>
 							</div>
 						</div>
 
 						<iframe
 							ref={iframeRef}
 							className={cx(
-								'absolute top-0 h-[calc(100vh-8.5rem)] w-screen will-change-transform transition-transform',
-								!isIframeActive ? 'pointer-events-none rounded-lg shadow-xl' : ''
+								'absolute top-0 h-[calc(100vh-8.5rem) sm:h-[calc(100vh-6.5rem)] w-screen will-change-transform transition-transform',
+								'rounded-lg shadow-xl',
+								!isIframeActive ? 'pointer-events-none' : ''
 							)}
 							id="block-editor"
 							title="Block Editor"
@@ -324,7 +361,7 @@ export default function Home() {
 							frameBorder={0}
 							width="100%"
 							height="100%"
-							style={{ transform: 'translateY(50%) scale(0.75)' }}
+							style={{ transform: 'translateY(70%) scale(0.75)' }}
 						/>
 					</div>
 				</div>
