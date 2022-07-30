@@ -32,23 +32,27 @@ export default function Home() {
 		}, 1000);
 	};
 
-	const getEasterEggMessage = () => {
-		switch (clickCount) {
-			case 2:
-				return "Oh, you think you've found something?";
-			case 4:
-				return 'Certainly not an easter egg';
-			case 6:
-				return "You're definitely not getting any closer";
-			case 10:
-				return "You're persistent, aren't you? Fine, take it.";
+	const getEasterEggMessage = (count) => {
+		if (count >= 2) {
+			return "Oh, you think you've found something?";
+		}
+
+		if (count >= 4) {
+			return 'Certainly not an easter egg';
+		}
+
+		if (count >= 6) {
+			return "You're definitely not getting any closer";
+		}
+
+		if (count >= 10) {
+			return "You're persistent, aren't you? Fine, take it.";
 		}
 	};
 
-	const getEasterEggDiscountCode = () => {
-		switch (clickCount) {
-			case 10:
-				return 'EGG10';
+	const getEasterEggDiscountCode = (count) => {
+		if (count >= 10) {
+			return 'EGG10';
 		}
 	};
 
@@ -245,7 +249,7 @@ export default function Home() {
 							<div className="flex space-x-10">
 								<div className="inline-flex space-x-4">
 									<span className="inline-flex items-center text-sm font-medium text-gray-500 space-x-1">
-										<span>{getEasterEggMessage()}</span>
+										<span>{getEasterEggMessage(clickCount)}</span>
 									</span>
 									<span className="rounded bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-800 tracking-wide uppercase">
 										{clickCount >= 10 ? (
@@ -253,7 +257,7 @@ export default function Home() {
 												href="https://usewritersblocks.lemonsqueezy.com/checkout/buy/5b192dd2-ecfc-4510-bb8e-27b680722df3?logo=0dark=1&embed=1"
 												className="lemonsqueezy-button"
 											>
-												{getEasterEggDiscountCode()}
+												{getEasterEggDiscountCode(clickCount)}
 											</a>
 										) : null}
 									</span>
