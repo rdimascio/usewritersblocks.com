@@ -69,6 +69,10 @@ export default function Home() {
 
 	useEffect(() => {
 		if (iframeRef.current) {
+			const loadIframe = () => {
+				iframeRef.current.src = iframeRef.current.getAttribute('data-src');
+			};
+
 			const { transform: currentIframeTransform } = window.getComputedStyle(
 				iframeRef.current
 			);
@@ -79,6 +83,12 @@ export default function Home() {
 
 			iframeTop.current = currentIframeTop;
 			iframeScale.current = currentIframeScale;
+
+			window.addEventListener('load', loadIframe);
+
+			return () => {
+				window.removeEventListener('load', loadIframe);
+			}
 		}
 	}, []);
 
@@ -358,7 +368,7 @@ export default function Home() {
 							)}
 							id="block-editor"
 							title="Block Editor"
-							src="https://demo.usewritersblocks.com"
+							data-src="https://demo.usewritersblocks.com"
 							frameBorder={0}
 							width="100%"
 							height="100%"
