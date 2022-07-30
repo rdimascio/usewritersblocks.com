@@ -9,6 +9,10 @@ import Link from 'next/link';
 import Script from 'next/script';
 import { throttle } from 'lodash';
 
+const isHoverableDevice = window.matchMedia(
+  '(hover: hover) and (pointer: fine)'
+);
+
 export default function Home() {
 	const [isIframeActive, setIsIframeActive] = useState(false);
 	const [isAnnotationActive, setIsAnnotationActive] = useState(true);
@@ -115,15 +119,20 @@ export default function Home() {
 		const handleWindowResize = throttle(() => {
 			iframeRef.current.style.transform = `translateY(${iframeTop.current}px) scale(${iframeScale.current})`;
 		}, 100);
+		
+		if (isHoverableDevice.matches) {			
+			window.addEventListener('wheel', handleScroll, { passive: true });
+			window.addEventListener('resize', handleWindowResize);
+			window.addEventListener('orientationchange', handleWindowResize);
+		}
 
-		window.addEventListener('wheel', handleScroll, { passive: true });
-		window.addEventListener('resize', handleWindowResize);
-		window.addEventListener('orientationchange', handleWindowResize);
 
 		return () => {
-			window.removeEventListener('wheel', handleScroll);
-			window.removeEventListener('resize', handleWindowResize);
-			window.removeEventListener('orientationchange', handleWindowResize);
+			if (isHoverableDevice.matches) {				
+				window.removeEventListener('wheel', handleScroll);
+				window.removeEventListener('resize', handleWindowResize);
+				window.removeEventListener('orientationchange', handleWindowResize);
+			}
 		};
 	}, []);
 
@@ -289,7 +298,7 @@ export default function Home() {
 											disabled: !isAnnotationActive,
 										}}
 									>
-										{isAnnotationActive ? "wev'e" : "you've"}
+										{isAnnotationActive ? "youv'e" : "you've"}
 										{!isAnnotationActive && !didConfettiExplode ? (
 											<span className="absolute left-1/2 top-1/2 translate-y-[-50%] translate-x-[-50%]">
 												<ConfettiExplosion
@@ -310,8 +319,9 @@ export default function Home() {
 						<iframe
 							ref={iframeRef}
 							className={cx(
-								'absolute top-0 h-[calc(100vh-8.5rem)] w-screen will-change-transform transition-transform',
-								!isIframeActive ? 'pointer-events-none rounded-lg shadow-xl' : ''
+								'h-[calc(100vh-8.5rem)] w-screen',
+								'rounded-lg shadow-xl',
+								!isIframeActive ? 'pointer-events-none' : ''
 							)}
 							id="block-editor"
 							title="Block Editor"
