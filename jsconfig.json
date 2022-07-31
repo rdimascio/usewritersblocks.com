@@ -1,11 +1,12 @@
 {
 	"compilerOptions": {
 		"resolveJsonModule": true,
-		"jsx": "react",
+		"jsx": "react-jsx",
 		"checkJs": true,
 		"baseUrl": ".",
 		"paths": {
 			"@/components/*": ["components/*"],
+			"@/context/*": ["context/*"],
 			"@/lib/*": ["lib/*"],
 			"@/util/*": ["util/*"],
 			"@/scripts/*": ["bin/*"],
