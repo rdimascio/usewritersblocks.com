@@ -23,8 +23,6 @@ export default function Home() {
 	const iframeTop = useRef(0);
 	const iframeScale = useRef(0);
 
-	console.log(state);
-
 	const handleLiveDemoClick = () => {
 		iframeRef.current.style.transform = `translateY(0px) scale(0.75)`;
 
@@ -67,11 +65,15 @@ export default function Home() {
 			iframeTop.current = currentIframeTop;
 			iframeScale.current = currentIframeScale;
 
-			window.addEventListener('load', loadIframe);
+			if (document.readyState === 'complete') {
+				loadIframe();
+			} else {
+				window.addEventListener('load', loadIframe);
 
-			return () => {
-				window.removeEventListener('load', loadIframe);
-			};
+				return () => {
+					window.removeEventListener('load', loadIframe);
+				};
+			}
 		}
 	}, []);
 
