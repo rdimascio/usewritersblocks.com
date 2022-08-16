@@ -44,10 +44,10 @@ export default function Header() {
 					</svg>
 				</a>
 			</Link>
+			<Link href="/pricing" passHref>
 			<a
-				href="https://usewritersblocks.lemonsqueezy.com/checkout/buy/5b192dd2-ecfc-4510-bb8e-27b680722df3?logo=0dark=1&embed=1"
 				className={cx(
-					'lemonsqueezy-button flex items-center text-base font-medium text-gray-900 dark:text-white transition-opacity duration-200 ease-in-out',
+					'flex items-center text-base font-medium text-gray-900 dark:text-white transition-opacity duration-200 ease-in-out',
 					state.demo.isActive
 						? 'opacity-100'
 						: 'opacity-0 select-none pointer-events-none'
@@ -63,6 +63,7 @@ export default function Header() {
 					<ArrowRight className="w-4 h-4" />
 				</span>
 			</a>
+			</Link>
 			<button
 				className="px-4 py-2 text-black dark:text-white font-semibold rounded-md"
 				onClick={() => {

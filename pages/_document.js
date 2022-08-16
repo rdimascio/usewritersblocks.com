@@ -72,7 +72,7 @@ class MyDocument extends Document {
 
 					<link rel="alternate" type="application/rss+xml" href="/index.xml" />
 				</Head>
-				<body className="bg-gray-50 dark:bg-gray-900 dark:text-white text-gray-900 overflow-hidden h-screen">
+				<body className="bg-gray-50 dark:bg-gray-900 dark:text-white text-gray-900">
 					<Main />
 					<NextScript />
 				</body>
