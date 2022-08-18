@@ -3,9 +3,13 @@
  */
 import { useContext } from 'react';
 import cx from 'classnames';
-import { useTheme } from 'next-themes';
+// import { useTheme } from 'next-themes';
 import Link from 'next/link';
-import { Sun, Moon, ArrowRight } from 'react-feather';
+import {
+	// Sun,
+	// Moon,
+	// ArrowRight,
+} from 'react-feather';
 
 /**
  * Internal dependencies
@@ -13,11 +17,11 @@ import { Sun, Moon, ArrowRight } from 'react-feather';
 import { Context } from '@/context/index.js';
 
 export default function Header() {
-	const { theme, setTheme } = useTheme();
+	// const { theme, setTheme } = useTheme();
 	// @ts-ignore
 	const { state } = useContext(Context);
 
-	const isLightModeEnabled = theme === 'light';
+	// const isLightModeEnabled = theme === 'light';
 
 	return (
 		<header className="flex flex-row justify-between align-center p-4">
@@ -47,7 +51,7 @@ export default function Header() {
 			<Link href="/pricing" passHref>
 				<a
 					className={cx(
-						'flex items-center text-base font-medium text-gray-900 dark:text-white transition-opacity duration-200 ease-in-out',
+						'flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black md:text-lg md:px-10 md:py-4',
 						state.demo.isActive
 							? 'opacity-100'
 							: 'opacity-0 select-none pointer-events-none'
@@ -59,12 +63,9 @@ export default function Header() {
 						: {})}
 				>
 					Get started
-					<span className="ml-2">
-						<ArrowRight className="w-4 h-4" />
-					</span>
 				</a>
 			</Link>
-			<button
+			{/* <button
 				className="px-4 py-2 text-black dark:text-white font-semibold rounded-md"
 				onClick={() => {
 					setTheme(isLightModeEnabled ? 'dark' : 'light');
@@ -74,7 +75,7 @@ export default function Header() {
 					Turn on {isLightModeEnabled ? 'dark' : 'light'} mode
 				</span>
 				{isLightModeEnabled ? <Moon /> : <Sun />}
-			</button>
+			</button> */}
 		</header>
 	);
 }

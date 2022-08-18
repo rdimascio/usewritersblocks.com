@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { ThemeProvider } from 'next-themes';
+// import { ThemeProvider } from 'next-themes';
 import { Provider as ContextProvider } from '@/context/index.js';
 
 /**
@@ -16,13 +16,13 @@ export function reportWebVitals(metric) {
 
 export default function MyApp({ Component, pageProps }) {
 	return (
-		<ThemeProvider attribute="class">
+		// <ThemeProvider attribute="class">
 			<ContextProvider>
 				<Header />
 				<main>
 					<Component {...pageProps} />
 				</main>
 			</ContextProvider>
-		</ThemeProvider>
+		// </ThemeProvider>
 	);
 }

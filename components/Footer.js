@@ -25,13 +25,14 @@ export default function Footer({ background = undefined }) {
 					))}
 				</nav>
 				<p className="mt-8 text-center text-base text-gray-300">
-					&copy; {new Date().getFullYear()} Writer's Blocks from{' '}
+					&copy; {new Date().getFullYear()} Writer's Blocks
+					{/* {' '}from{' '}
 					<a
 						className="underline text-gray-500 hover:text-gray-700"
 						href="https://twitter.com/dimasc_io"
 					>
 						Ryan DiMascio
-					</a>
+					</a> */}
 				</p>
 			</div>
 		</footer>

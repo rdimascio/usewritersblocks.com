@@ -78,6 +78,8 @@ export default function Home() {
 				return () => {
 					document.body.classList.remove('overflow-hidden');
 					document.body.classList.remove('h-screen');
+
+					document.body.style.overflow = 'visible';
 				};
 			} else {
 				window.addEventListener('load', loadIframe);
@@ -87,6 +89,8 @@ export default function Home() {
 
 					document.body.classList.remove('overflow-hidden');
 					document.body.classList.remove('h-screen');
+
+					document.body.style.overflow = 'visible';
 				};
 			}
 		}
@@ -166,8 +170,8 @@ export default function Home() {
 				<meta name="description" content="" />
 				{/* <link rel="icon" href="/favicon.ico" /> */}
 			</Head>
-			<div className="overflow-hidden h-[calc(100vh-4.5rem)]">
-				<div className="h-[calc(80vh-4.5rem)] flex flex-col justify-center mx-auto w-full max-w-7xl px-4 sm:px-6 text-center">
+			<div className="overflow-hidden h-[calc(100vh-5.875rem)]">
+				<div className="h-[calc(80vh-5.875rem)] flex flex-col justify-center mx-auto w-full max-w-7xl px-4 sm:px-6 text-center">
 					<h1 className="tracking-tight font-extrabold text-gray-900 dark:text-gray-100 text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl">
 						The WordPress editor{' '}
 						<button
@@ -226,7 +230,7 @@ export default function Home() {
 					<iframe
 						ref={iframeRef}
 						className={cx(
-							'absolute top-[4.5rem] left-0 h-[calc(100vh-4.5rem)] w-screen will-change-transform transition-transform',
+							'absolute top-[5.875rem] left-0 h-[calc(100vh-5.875rem)] w-screen will-change-transform transition-transform',
 							'rounded-lg shadow-xl',
 							!state.demo.isActive ? 'pointer-events-none' : ''
 						)}
