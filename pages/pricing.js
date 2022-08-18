@@ -14,7 +14,7 @@ import { Context } from '@/context/index.js';
 const PLUGIN_ID = '9858';
 const PLAN_ID = '18452';
 const PUBLIC_KEY = 'pk_50be058a9f3a7baf8d8f74269d6dc';
-const LOGO = 'https://usewritersblocks.com/logo.png';
+const LOGO = 'https://usewritersblocks.com/static/img/logo.png';
 const tiers = [
 	{
 		id: '18452',
