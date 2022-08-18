@@ -79,15 +79,6 @@ export default function Pricing() {
 				payload: false,
 			});
 		}
-
-		if (!handler.current) {
-			handler.current = window.FS.Checkout.configure({
-				plugin_id: PLUGIN_ID,
-				plan_id: PLAN_ID,
-				public_key: PUBLIC_KEY,
-				image: LOGO,
-			});
-		}
 	}, []);
 
 	const handleButtonClick = (event) => {
@@ -97,6 +88,15 @@ export default function Pricing() {
 
 		if (!window.jQuery || !window.FS) {
 			return;
+		}
+
+		if (!handler.current) {
+			handler.current = window.FS.Checkout.configure({
+				plugin_id: PLUGIN_ID,
+				plan_id: PLAN_ID,
+				public_key: PUBLIC_KEY,
+				image: LOGO,
+			});
 		}
 
 		handler.current.open({
