@@ -95,12 +95,12 @@ export default function Pricing() {
 
 		const { target } = event;
 
-		if ( !window.jQuery || !window.FS ) {
+		if (!window.jQuery || !window.FS) {
 			return;
 		}
 
 		handler.current.open({
-			name: 'Writer\'s Blocks',
+			name: "Writer's Blocks",
 			licenses: target.getAttribute('data-licenses'),
 		});
 	};
