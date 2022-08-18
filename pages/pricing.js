@@ -3,6 +3,7 @@
  */
 import { useEffect, useContext, useRef } from 'react';
 import { CheckIcon } from '@heroicons/react/outline';
+import Script from 'next/script';
 
 /**
  * Internal dependencies
@@ -141,6 +142,9 @@ export default function Pricing() {
 
 	return (
 		<>
+			<Script src="https://code.jquery.com/jquery-1.12.4.min.js" />
+			<Script src="https://checkout.freemius.com/checkout.min.js" />
+
 			<div className="bg:gray-100 dark:bg-gray-900">
 				<div className="pt-12 sm:pt-16 lg:pt-24">
 					<div className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">

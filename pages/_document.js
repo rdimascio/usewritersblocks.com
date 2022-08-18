@@ -78,9 +78,6 @@ class MyDocument extends Document {
 					<Main />
 					<NextScript />
 				</body>
-
-				<script src="https://code.jquery.com/jquery-1.12.4.min.js" />
-				<script src="https://checkout.freemius.com/checkout.min.js" />
 			</Html>
 		);
 	}
