@@ -74,14 +74,14 @@ module.exports = withPlugins([[withBundleAnalyzer], [withPWA]], {
 // https://securityheaders.com
 const ContentSecurityPolicy = `
 	default-src 'self';
-	script-src 'self' 'unsafe-eval' 'unsafe-inline' app.lemonsqueezy.com d29lra7z8g0m3a.cloudfront.net;
+	script-src 'self' 'unsafe-eval' 'unsafe-inline' code.jquery.com checkout.freemius.com;
 	worker-src 'self';
 	style-src 'self' 'unsafe-inline' fonts.googleapis.com;
 	img-src * blob: data:;
 	media-src 'none';
 	connect-src *;
 	font-src 'self' fonts.gstatic.com;
-	frame-src demo.usewritersblocks.com usewritersblocks.lemonsqueezy.com;
+	frame-src demo.usewritersblocks.com checkout.freemius.com;
 `;
 
 const securityHeaders = [

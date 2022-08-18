@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useRef } from 'react';
 import Head from 'next/head';
 import { CheckIcon } from '@heroicons/react/outline';
 
@@ -11,10 +11,16 @@ import { CheckIcon } from '@heroicons/react/outline';
 import Footer from '@/components/Footer';
 import { Context } from '@/context/index.js';
 
+const PLUGIN_ID = '9858';
+const PLAN_ID = '18452';
+const PUBLIC_KEY = 'pk_50be058a9f3a7baf8d8f74269d6dc';
+const LOGO = 'https://usewritersblocks.com/logo.png';
 const tiers = [
 	{
+		id: '18452',
 		key: 'single',
 		name: 'Single Site',
+		licenses: '1',
 		description: 'Enjoy one year of updates and support for a single website.',
 		price: 49,
 		href: 'https://usewritersblocks.lemonsqueezy.com/checkout/buy/cabb5505-23e7-4a58-8231-5e27bc1e6f5e?media=0&embed=1',
@@ -26,8 +32,10 @@ const tiers = [
 		],
 	},
 	{
+		id: '18452',
 		key: 'unlimited',
 		name: 'Unlimited Sites',
+		licenses: 'unlimited',
 		description:
 			'Enjoy one year of updates and support for an unlimited number of your websites.',
 		href: 'https://usewritersblocks.lemonsqueezy.com/checkout/buy/5b192dd2-ecfc-4510-bb8e-27b680722df3?media=0&embed=1',
@@ -41,8 +49,10 @@ const tiers = [
 		],
 	},
 	{
+		id: '18452',
 		key: 'lifetime',
 		name: 'Lifetime Access',
+		licenses: 'unlimited',
 		description:
 			"Enjoy updates and support for an unlimited number of sites, for the lifetime of Writer's Blocks.",
 		href: 'https://usewritersblocks.lemonsqueezy.com/checkout/buy/c179a779-4251-47b2-8aae-98fa49b05673?media=0&embed=1',
@@ -58,6 +68,7 @@ const tiers = [
 
 export default function Pricing() {
 	const { state, dispatch } = useContext(Context);
+	const handler = useRef(null);
 
 	const lifetimeTier = tiers.find((tier) => tier.key === 'lifetime');
 
@@ -68,15 +79,39 @@ export default function Pricing() {
 				payload: false,
 			});
 		}
+
+		if (!handler.current) {
+			handler.current = window.FS.Checkout.configure({
+				plugin_id: PLUGIN_ID,
+				plan_id: PLAN_ID,
+				public_key: PUBLIC_KEY,
+				image: LOGO,
+			});
+		}
 	}, []);
+
+	const handleButtonClick = (event) => {
+		event.preventDefault();
+
+		const { target } = event;
+
+		if ( !window.jQuery || !window.FS ) {
+			return;
+		}
+
+		handler.current.open({
+			name: 'Writer\'s Blocks',
+			licenses: target.getAttribute('data-licenses'),
+		});
+	};
 
 	return (
 		<>
 			<Head>
 				<title>Pricing</title>
 				<meta name="description" content="" />
-				{/* <link rel="icon" href="/favicon.ico" /> */}
-				<script src="https://app.lemonsqueezy.com/js/checkout.js" defer />
+				<script src="https://code.jquery.com/jquery-1.12.4.min.js" defer />
+				<script src="https://checkout.freemius.com/checkout.min.js" defer />
 			</Head>
 
 			<div className="bg:gray-100 dark:bg-gray-900">
@@ -141,13 +176,15 @@ export default function Pricing() {
 													))}
 												</ul>
 												<div className="rounded-md shadow">
-													<a
-														href={tier.href}
-														className="lemonsqueezy-button flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
+													<button
+														onClick={handleButtonClick}
+														data-plan={tier.id}
+														data-licenses={tier.licenses}
+														className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
 														aria-describedby={tier.key}
 													>
 														Get started
-													</a>
+													</button>
 												</div>
 											</div>
 										</div>
@@ -203,13 +240,15 @@ export default function Pricing() {
 								</div>
 								<div className="mt-6">
 									<div className="rounded-md shadow">
-										<a
-											href={lifetimeTier.href}
-											className="lemonsqueezy-button flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
+										<button
+											onClick={handleButtonClick}
+											data-plan={lifetimeTier.id}
+											data-licenses={lifetimeTier.licenses}
+											className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900"
 											aria-describedby={lifetimeTier.key}
 										>
 											Get Access
-										</a>
+										</button>
 									</div>
 								</div>
 							</div>

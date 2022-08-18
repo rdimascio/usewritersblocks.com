@@ -7,4 +7,16 @@
 	<url>
 		<loc>/pricing</loc>
 	</url>
+
+	<url>
+		<loc>/privacy</loc>
+	</url>
+
+	<url>
+		<loc>/support-policy</loc>
+	</url>
+
+	<url>
+		<loc>/terms</loc>
+	</url>
 </urlset>
