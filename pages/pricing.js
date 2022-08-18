@@ -72,13 +72,11 @@ const tiers = [
 const faqs = [
 	{
 		question: 'What is Writer’s Blocks?',
-		answer:
-			'Writer’s Blocks is a WordPress plugin for bloggers, content creators, writers, and editors using Gutenberg. It checks your writing for common errors and such as spelling, grammar, style, and readability.',
+		answer: 'Writer’s Blocks is a WordPress plugin for bloggers, content creators, writers, and editors using Gutenberg. It checks your writing for common errors and such as spelling, grammar, style, and readability.',
 	},
 	{
 		question: 'How do I use Writer’s Blocks?',
-		answer:
-			'Install the plugin, open a post or page, and turn on editing mode.',
+		answer: 'Install the plugin, open a post or page, and turn on editing mode.',
 	},
 	{
 		question: 'Does Writer’s Blocks work with my theme?',
@@ -295,23 +293,29 @@ export default function Pricing() {
 							</div>
 							<div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
 								<div className="lg:max-w-2xl lg:mx-auto lg:text-center">
-								<h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight">
-									FAQ
-								</h2>
-								<p className="mt-4 text-lg text-gray-500">
-									Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel nulla nec.
-									Urna, sed a lectus elementum blandit et.
-								</p>
+									<h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight">
+										FAQ
+									</h2>
+									<p className="mt-4 text-lg text-gray-500">
+										Ac euismod vel sit maecenas id pellentesque eu sed
+										consectetur. Malesuada adipiscing sagittis vel nulla nec.
+										Urna, sed a lectus elementum blandit et.
+									</p>
 								</div>
 								<div className="mt-20">
-								<dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10">
-									{faqs.map((faq, id) => (
-										<div key={id}>
-											<dt className="font-semibold text-lg text-gray-500">{faq.question}</dt>
-											<dd className="mt-3 text-gray-400" dangerouslySetInnerHTML={{__html: faq.answer}}></dd>
-										</div>
-									))}
-								</dl>
+									<dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10">
+										{faqs.map((faq, id) => (
+											<div key={id}>
+												<dt className="font-semibold text-lg text-gray-500">
+													{faq.question}
+												</dt>
+												<dd
+													className="mt-3 text-gray-400"
+													dangerouslySetInnerHTML={{ __html: faq.answer }}
+												></dd>
+											</div>
+										))}
+									</dl>
 								</div>
 							</div>
 						</div>

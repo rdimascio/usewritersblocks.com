@@ -17,12 +17,12 @@ export function reportWebVitals(metric) {
 export default function MyApp({ Component, pageProps }) {
 	return (
 		// <ThemeProvider attribute="class">
-			<ContextProvider>
-				<Header />
-				<main>
-					<Component {...pageProps} />
-				</main>
-			</ContextProvider>
+		<ContextProvider>
+			<Header />
+			<main>
+				<Component {...pageProps} />
+			</main>
+		</ContextProvider>
 		// </ThemeProvider>
 	);
 }

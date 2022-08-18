@@ -5,11 +5,10 @@ import { useContext } from 'react';
 import cx from 'classnames';
 // import { useTheme } from 'next-themes';
 import Link from 'next/link';
-import {
-	// Sun,
-	// Moon,
-	// ArrowRight,
-} from 'react-feather';
+import // Sun,
+// Moon,
+// ArrowRight,
+'react-feather';
 
 /**
  * Internal dependencies
