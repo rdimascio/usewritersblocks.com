@@ -45,24 +45,24 @@ export default function Header() {
 				</a>
 			</Link>
 			<Link href="/pricing" passHref>
-			<a
-				className={cx(
-					'flex items-center text-base font-medium text-gray-900 dark:text-white transition-opacity duration-200 ease-in-out',
-					state.demo.isActive
-						? 'opacity-100'
-						: 'opacity-0 select-none pointer-events-none'
-				)}
-				{...(!state.demo.isActive
-					? {
-							tabIndex: -1,
-					  }
-					: {})}
-			>
-				Get started
-				<span className="ml-2">
-					<ArrowRight className="w-4 h-4" />
-				</span>
-			</a>
+				<a
+					className={cx(
+						'flex items-center text-base font-medium text-gray-900 dark:text-white transition-opacity duration-200 ease-in-out',
+						state.demo.isActive
+							? 'opacity-100'
+							: 'opacity-0 select-none pointer-events-none'
+					)}
+					{...(!state.demo.isActive
+						? {
+								tabIndex: -1,
+						  }
+						: {})}
+				>
+					Get started
+					<span className="ml-2">
+						<ArrowRight className="w-4 h-4" />
+					</span>
+				</a>
 			</Link>
 			<button
 				className="px-4 py-2 text-black dark:text-white font-semibold rounded-md"
