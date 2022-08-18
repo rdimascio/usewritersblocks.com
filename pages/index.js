@@ -65,32 +65,13 @@ export default function Home() {
 			iframeTop.current = currentIframeTop;
 			iframeScale.current = currentIframeScale;
 
-			document.body.classList.add('overflow-hidden');
-			document.body.classList.add('h-screen');
-
-			// The Freemius checkout iFrame adds `overflow: visible`
-			// to the body element when it opens.
-			document.body.style.overflow = 'hidden';
-
 			if (document.readyState === 'complete') {
 				loadIframe();
-
-				return () => {
-					document.body.classList.remove('overflow-hidden');
-					document.body.classList.remove('h-screen');
-
-					document.body.style.overflow = 'visible';
-				};
 			} else {
 				window.addEventListener('load', loadIframe);
 
 				return () => {
 					window.removeEventListener('load', loadIframe);
-
-					document.body.classList.remove('overflow-hidden');
-					document.body.classList.remove('h-screen');
-
-					document.body.style.overflow = 'visible';
 				};
 			}
 		}
@@ -152,11 +133,23 @@ export default function Home() {
 			iframeRef.current.style.transform = `translateY(${iframeTop.current}px) scale(${iframeScale.current})`;
 		}, 100);
 
+		// The Freemius checkout iFrame adds `overflow: visible`
+		// to the body element when it opens.
+		document.body.style.overflow = 'hidden';
+
+		document.body.classList.add('overflow-hidden');
+		document.body.classList.add('h-screen');
+
 		window.addEventListener('wheel', handleScroll, { passive: true });
 		window.addEventListener('resize', handleWindowResize);
 		window.addEventListener('orientationchange', handleWindowResize);
 
 		return () => {
+			document.body.style.overflow = 'visible';
+
+			document.body.classList.remove('overflow-hidden');
+			document.body.classList.remove('h-screen');
+
 			window.removeEventListener('wheel', handleScroll);
 			window.removeEventListener('resize', handleWindowResize);
 			window.removeEventListener('orientationchange', handleWindowResize);
@@ -203,8 +196,8 @@ export default function Home() {
 						been waiting for.
 					</h1>
 					<p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-						Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
-						cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+						Write better with Writer's Blocks. Improve your clarity, readability, and efficiency with
+						the first inline content editor built specifically for the new block editor.
 					</p>
 					<div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
 						<div className="rounded-md shadow">
