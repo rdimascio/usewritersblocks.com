@@ -52,7 +52,10 @@ class MyDocument extends Document {
 					<meta property="og:title" content="Writer's Blocks" />
 					<meta property="og:url" content="https://usewritersblocks.com" />
 					<meta property="og:type" content="website" />
-					<meta property="og:description" content="Improve your clarity, readability, and efficiency with the first inline content editor built specifically for the WordPress block editor." />
+					<meta
+						property="og:description"
+						content="Improve your clarity, readability, and efficiency with the first inline content editor built specifically for the WordPress block editor."
+					/>
 					<meta property="og:image" content="/static/img/site-image-1280x640.jpg" />
 					<meta property="og:image:width" content="1280" />
 					<meta property="og:image:height" content="640" />
