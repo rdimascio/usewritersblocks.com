@@ -68,6 +68,10 @@ export default function Home() {
 			document.body.classList.add('overflow-hidden');
 			document.body.classList.add('h-screen');
 
+			// The Freemius checkout iFrame adds `overflow: visible`
+			// to the body element when it opens.
+			document.body.style.overflow = 'hidden';
+
 			if (document.readyState === 'complete') {
 				loadIframe();
 
