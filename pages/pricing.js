@@ -72,7 +72,7 @@ const tiers = [
 const faqs = [
 	{
 		question: 'What is Writer’s Blocks?',
-		answer: 'Writer’s Blocks is a WordPress plugin for bloggers, content creators, writers, and editors using Gutenberg. It checks your writing for common errors and such as spelling, grammar, style, and readability.',
+		answer: 'Writer’s Blocks is a WordPress plugin for bloggers, content creators, writers, and editors using Gutenberg. It checks your writing for common errors such as spelling, grammar, style, and readability.',
 	},
 	{
 		question: 'How do I use Writer’s Blocks?',
@@ -84,7 +84,7 @@ const faqs = [
 	},
 	{
 		question: 'Can I use this plugin with the Classic Editor?',
-		answer: 'No, Writer’s Blocks is specifically built for the block editor, AKA Gutenberg, AKA the future of WordPress.',
+		answer: 'No, Writer’s Blocks is specifically built for the block editor.',
 	},
 	{
 		question: 'Is there a refund policy?',
@@ -296,11 +296,11 @@ export default function Pricing() {
 									<h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight">
 										FAQ
 									</h2>
-									<p className="mt-4 text-lg text-gray-500">
+									{/* <p className="mt-4 text-lg text-gray-500">
 										Ac euismod vel sit maecenas id pellentesque eu sed
 										consectetur. Malesuada adipiscing sagittis vel nulla nec.
 										Urna, sed a lectus elementum blandit et.
-									</p>
+									</p> */}
 								</div>
 								<div className="mt-20">
 									<dl className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-x-8 lg:gap-y-10">
