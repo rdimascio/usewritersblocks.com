@@ -4,7 +4,6 @@
 import { useState, useRef, useEffect, useContext } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
 import cx from 'classnames';
-import Head from 'next/head';
 import Link from 'next/link';
 import { throttle } from 'lodash';
 
@@ -158,11 +157,6 @@ export default function Home() {
 
 	return (
 		<>
-			<Head>
-				<title>Writer's Blocks</title>
-				<meta name="description" content="" />
-				{/* <link rel="icon" href="/favicon.ico" /> */}
-			</Head>
 			<div className="overflow-hidden h-[calc(100vh-5.875rem)]">
 				<div className="h-[calc(80vh-5.875rem)] flex flex-col justify-center mx-auto w-full max-w-7xl px-4 sm:px-6 text-center">
 					<h1 className="tracking-tight font-extrabold text-gray-900 dark:text-gray-100 text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl">

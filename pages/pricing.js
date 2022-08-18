@@ -2,7 +2,6 @@
  * External dependencies
  */
 import { useEffect, useContext, useRef } from 'react';
-import Head from 'next/head';
 import { CheckIcon } from '@heroicons/react/outline';
 
 /**
@@ -116,39 +115,32 @@ export default function Pricing() {
 	}, []);
 
 	const handleButtonClick = (event) => {
-		event.preventDefault();
-
 		const { target } = event;
 
 		if (!window.jQuery || !window.FS) {
 			return;
-		}
+		} else {
+			event.preventDefault();
 
-		if (!handler.current) {
-			handler.current = window.FS.Checkout.configure({
-				plugin_id: PLUGIN_ID,
-				plan_id: PLAN_ID,
-				public_key: PUBLIC_KEY,
-				image: LOGO,
+			if (!handler.current) {
+				handler.current = window.FS.Checkout.configure({
+					plugin_id: PLUGIN_ID,
+					plan_id: PLAN_ID,
+					public_key: PUBLIC_KEY,
+					image: LOGO,
+				});
+			}
+
+			handler.current.open({
+				name: "Writer's Blocks",
+				licenses: target.getAttribute('data-licenses'),
+				billing_cycle: target.getAttribute('data-billing-cycle'),
 			});
 		}
-
-		handler.current.open({
-			name: "Writer's Blocks",
-			licenses: target.getAttribute('data-licenses'),
-			billing_cycle: target.getAttribute('data-billing-cycle'),
-		});
 	};
 
 	return (
 		<>
-			<Head>
-				<title>Pricing</title>
-				<meta name="description" content="" />
-				<script src="https://code.jquery.com/jquery-1.12.4.min.js" defer />
-				<script src="https://checkout.freemius.com/checkout.min.js" defer />
-			</Head>
-
 			<div className="bg:gray-100 dark:bg-gray-900">
 				<div className="pt-12 sm:pt-16 lg:pt-24">
 					<div className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -211,7 +203,8 @@ export default function Pricing() {
 													))}
 												</ul>
 												<div className="rounded-md shadow">
-													<button
+													<a
+														href={`https://checkout.freemius.com/mode/dialog/plugin/${PLUGIN_ID}/plan/${PLAN_ID}/`}
 														onClick={handleButtonClick}
 														data-plan={tier.id}
 														data-licenses={tier.licenses}
@@ -220,7 +213,7 @@ export default function Pricing() {
 														aria-describedby={tier.key}
 													>
 														Get started
-													</button>
+													</a>
 												</div>
 											</div>
 										</div>
@@ -277,7 +270,8 @@ export default function Pricing() {
 									</div>
 									<div className="mt-6">
 										<div className="rounded-md shadow">
-											<button
+											<a
+												href={`https://checkout.freemius.com/mode/dialog/plugin/${PLUGIN_ID}/plan/${PLAN_ID}/`}
 												onClick={handleButtonClick}
 												data-plan={lifetimeTier.id}
 												data-licenses={lifetimeTier.licenses}
@@ -286,7 +280,7 @@ export default function Pricing() {
 												aria-describedby={lifetimeTier.key}
 											>
 												Get Access
-											</button>
+											</a>
 										</div>
 									</div>
 								</div>

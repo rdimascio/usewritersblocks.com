@@ -48,18 +48,17 @@ class MyDocument extends Document {
 					<link rel="apple-touch-icon" sizes="167x167" href="/static/icons/touch-icon-ipad-retina.png" />
 					*/}
 
-					<meta name="twitter:card" content="" />
-					<meta name="twitter:url" content="" />
-					<meta name="twitter:title" content="" />
-					<meta name="twitter:description" content="" />
-					<meta name="twitter:image" content="" />
-					<meta name="twitter:creator" content="" />
+					<meta property="og:site_name" content="Writer's Blocks" />
+					<meta property="og:title" content="Writer's Blocks" />
+					<meta property="og:url" content="https://usewritersblocks.com" />
 					<meta property="og:type" content="website" />
-					<meta property="og:title" content="" />
-					<meta property="og:description" content="" />
-					<meta property="og:site_name" content="" />
-					<meta property="og:url" content="" />
-					<meta property="og:image" content="" />
+					<meta property="og:description" content="Improve your clarity, readability, and efficiency with the first inline content editor built specifically for the WordPress block editor." />
+					<meta property="og:image" content="/static/img/site-image-1280x640.jpg" />
+					<meta property="og:image:width" content="1280" />
+					<meta property="og:image:height" content="640" />
+
+					<meta name="twitter:card" content="summary_large_image" />
+					<meta name="twitter:site" content="@writers__blocks" />
 
 					{/* apple splash screen images
 					<link rel="apple-touch-startup-image" href="/static/images/apple_splash_2048.png" sizes="2048x2732" />
@@ -76,6 +75,9 @@ class MyDocument extends Document {
 					<Main />
 					<NextScript />
 				</body>
+
+				<script src="https://code.jquery.com/jquery-1.12.4.min.js" />
+				<script src="https://checkout.freemius.com/checkout.min.js" />
 			</Html>
 		);
 	}
