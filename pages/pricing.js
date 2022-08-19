@@ -3,7 +3,7 @@
  */
 import { useEffect, useContext, useRef } from 'react';
 import { CheckIcon } from '@heroicons/react/outline';
-import Script from 'next/script';
+import { FSCheckout } from 'freemius-checkout-js';
 
 /**
  * Internal dependencies
@@ -115,36 +115,29 @@ export default function Pricing() {
 		}
 	}, []);
 
-	const handleButtonClick = (event) => {
+	const handleButtonClick = async (event) => {
+		event.preventDefault();
+
 		const { target } = event;
 
-		if (!window.jQuery || !window.FS) {
-			return;
-		} else {
-			event.preventDefault();
-
-			if (!handler.current) {
-				handler.current = window.FS.Checkout.configure({
-					plugin_id: PLUGIN_ID,
-					plan_id: PLAN_ID,
-					public_key: PUBLIC_KEY,
-					image: LOGO,
-				});
-			}
-
-			handler.current.open({
-				name: "Writer's Blocks",
-				licenses: target.getAttribute('data-licenses'),
-				billing_cycle: target.getAttribute('data-billing-cycle'),
+		if (!handler.current) {
+			handler.current = new FSCheckout({
+				plugin_id: PLUGIN_ID,
+				plan_id: PLAN_ID,
+				public_key: PUBLIC_KEY,
+				image: LOGO,
 			});
 		}
+
+		handler.current.open({
+			name: "Writer's Blocks",
+			licenses: target.getAttribute('data-licenses'),
+			billing_cycle: target.getAttribute('data-billing-cycle'),
+		});
 	};
 
 	return (
 		<>
-			<Script src="https://code.jquery.com/jquery-1.12.4.min.js" />
-			<Script src="https://checkout.freemius.com/checkout.min.js" />
-
 			<div className="bg:gray-100 dark:bg-gray-900">
 				<div className="pt-12 sm:pt-16 lg:pt-24">
 					<div className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
